@@ -39,38 +39,38 @@ libm = ["bevy_math/libm", "dep:libm"]
 
 [dependencies]
 smallvec = { version = "1.15.0", default-features = false } # Already used by bevy in commands
-bevy_app = { git = "https://github.com/bevyengine/bevy.git", branch = "main", default-features = false, features = [
+bevy_app = { git = "https://github.com/bevyengine/bevy", default-features = false, features = [
   "bevy_reflect",
 ] }
-bevy_ecs = { git = "https://github.com/bevyengine/bevy.git", branch = "main", default-features = false }
-bevy_log = { git = "https://github.com/bevyengine/bevy.git", branch = "main", default-features = false }
-bevy_math = { git = "https://github.com/bevyengine/bevy.git", branch = "main", default-features = false }
-bevy_reflect = { git = "https://github.com/bevyengine/bevy.git", branch = "main", default-features = false, features = [
+bevy_ecs = { git = "https://github.com/bevyengine/bevy", default-features = false }
+bevy_log = { git = "https://github.com/bevyengine/bevy", default-features = false }
+bevy_math = { git = "https://github.com/bevyengine/bevy", default-features = false }
+bevy_reflect = { git = "https://github.com/bevyengine/bevy", default-features = false, features = [
   "glam",
 ] }
-bevy_tasks = { git = "https://github.com/bevyengine/bevy.git", branch = "main", default-features = false }
-bevy_transform = { git = "https://github.com/bevyengine/bevy.git", branch = "main", default-features = false, features = [
+bevy_tasks = { git = "https://github.com/bevyengine/bevy", default-features = false }
+bevy_transform = { git = "https://github.com/bevyengine/bevy", default-features = false, features = [
   "bevy-support",
   "bevy_reflect",
 ] }
-bevy_utils = { git = "https://github.com/bevyengine/bevy.git", branch = "main", default-features = false }
-bevy_platform = { git = "https://github.com/bevyengine/bevy.git", branch = "main", default-features = false, features = [
+bevy_utils = { git = "https://github.com/bevyengine/bevy", default-features = false }
+bevy_platform = { git = "https://github.com/bevyengine/bevy", default-features = false, features = [
   "alloc",
 ] }
 # Optional
-bevy_color = { git = "https://github.com/bevyengine/bevy.git", branch = "main", default-features = false, optional = true }
-bevy_gizmos = { git = "https://github.com/bevyengine/bevy.git", branch = "main", default-features = false, optional = true }
-bevy_camera = { git = "https://github.com/bevyengine/bevy.git", branch = "main", default-features = false, optional = true }
-bevy_input = { git = "https://github.com/bevyengine/bevy.git", branch = "main", default-features = false, optional = true, features = [
+bevy_color = { git = "https://github.com/bevyengine/bevy", default-features = false, optional = true }
+bevy_gizmos = { git = "https://github.com/bevyengine/bevy", default-features = false, optional = true }
+bevy_camera = { git = "https://github.com/bevyengine/bevy", default-features = false, optional = true }
+bevy_input = { git = "https://github.com/bevyengine/bevy", default-features = false, optional = true, features = [
   "keyboard",
   "mouse",
 ] }
-bevy_time = { git = "https://github.com/bevyengine/bevy.git", branch = "main", default-features = false }
+bevy_time = { git = "https://github.com/bevyengine/bevy", default-features = false }
 libm = { version = "0.2", default-features = false, optional = true }
 async-channel = { version = "2.5", optional = true }
 
 [dev-dependencies]
-bevy = { git = "https://github.com/bevyengine/bevy.git", branch = "main", default-features = false, features = [
+bevy = { git = "https://github.com/bevyengine/bevy", default-features = false, features = [
   "bevy_animation",
   "bevy_asset",
   "bevy_color",
@@ -96,7 +96,7 @@ noise = "0.9"
 turborand = "0.10"
 
 [target.'cfg(not(target_family = "wasm"))'.dev-dependencies]
-bevy = { git = "https://github.com/bevyengine/bevy.git", branch = "main", default-features = false, features = [
+bevy = { git = "https://github.com/bevyengine/bevy", default-features = false, features = [
   "multi_threaded",
   "x11",
   "bevy_remote",
@@ -106,7 +106,7 @@ bevy = { git = "https://github.com/bevyengine/bevy.git", branch = "main", defaul
 version = "0.8"
 
 [target.'cfg(target_family = "wasm")'.dev-dependencies]
-bevy = { git = "https://github.com/bevyengine/bevy.git", branch = "main", default-features = false, features = [
+bevy = { git = "https://github.com/bevyengine/bevy", default-features = false, features = [
   "web",
   "webgpu",
 ] }
