@@ -3,6 +3,7 @@
 use bevy_app::{App, Plugin, PostUpdate};
 use bevy_ecs::entity::EntityHashSet;
 use bevy_ecs::prelude::*;
+use bevy_ecs::schedule::ApplyDeferred;
 use bevy_platform::{collections::HashMap, prelude::*};
 use bevy_transform::prelude::*;
 
@@ -17,9 +18,20 @@ struct ValidationStackEntry {
 pub struct BigSpaceValidationPlugin;
 impl Plugin for BigSpaceValidationPlugin {
     fn build(&self, app: &mut App) {
+        // `validate_hierarchy` is exclusive (`&mut World`) and reads
+        // `LowPrecisionRoot` via a runtime-built `QueryBuilder`.
+        // Bevy's auto-sync analysis can't see what the QueryBuilder
+        // will read, so commands queued by `tag_low_precision_roots`
+        // (which lives in `TransformSystems::Propagate`) might not
+        // have flushed by the time the validator runs — surfaces a
+        // one-shot false-positive error per fresh low-precision-root
+        // entity. An explicit `ApplyDeferred` between Propagate and
+        // the validator forces the flush.
         app.add_systems(
             PostUpdate,
-            validate_hierarchy::<SpatialHierarchyRoot>.after(TransformSystems::Propagate),
+            (ApplyDeferred, validate_hierarchy::<SpatialHierarchyRoot>)
+                .chain()
+                .after(TransformSystems::Propagate),
         );
     }
 }
